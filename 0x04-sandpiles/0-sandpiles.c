@@ -1,6 +1,3 @@
-#include <stdlib.h>
-#include <stdio.h>
-
 #include "sandpiles.h"
 
 /**
@@ -24,11 +21,11 @@ return (0);
 }
 
 /**
- * print_grid - Print 3x3 grid
+ * print - Print 3x3 grid
  * @grid: 3x3 grid
  *
  */
-static void print_grid(int grid[3][3])
+void print(int grid[3][3])
 {
 int i, j;
 
@@ -65,7 +62,7 @@ var = check(grid1);
 while (var == 1)
 {
 printf("=\n");
-print_grid(grid1);
+print(grid1);
 for (x = 0; x < 3; x++)
 {
 for (y = 0; y < 3; y++)
