@@ -61,14 +61,14 @@ grid1[i][j] = grid1[i][j] + grid2[i][j];
 var = check(grid1);
 while (var == 1)
 {
+printf("=\n");
+print(grid1);
 for (x = 0; x < 3; x++)
 {
 for (y = 0; y < 3; y++)
 {
 if (grid1[x][y] > 3)
 {
-printf("=\n");
-print(grid1);
 grid1[x][y] = grid1[x][y] - 4;
 if (y + 1 < 3)
 grid1[x][y + 1] = grid1[x][y + 1] + 1;
