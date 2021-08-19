@@ -50,6 +50,7 @@ printf("\n");
 void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 {
 int i = 0, j = 0, x = 0, y = 0, var = 0;
+int tmp[3][3];
 
 for (i = 0; i < 3; i++)
 {
@@ -63,21 +64,26 @@ while (var == 1)
 {
 printf("=\n");
 print(grid1);
+for (i = 0; i < 3; i++)
+{
+for (j = 0; j < 3; j++)
+tmp[i][j] = grid1[i][j];
+}
 for (x = 0; x < 3; x++)
 {
 for (y = 0; y < 3; y++)
 {
-if (grid1[x][y] > 3)
+if (tmp[x][y] >= 4)
 {
-grid1[x][y] = grid1[x][y] - 4;
-if (y + 1 < 3)
-grid1[x][y + 1] = grid1[x][y + 1] + 1;
-if (y - 1 >= 0)
-grid1[x][y - 1] = grid1[x][y - 1] + 1;
-if (x - 1 >= 0)
-grid1[x - 1][y] = grid1[x - 1][y] + 1;
-if (x + 1 < 3)
-grid1[x + 1][y] = grid1[x + 1][y] + 1;
+grid1[x][y] -= 4;
+if (x >= 1)
+grid1[x - 1][y] += 1;
+if (x <= 1)
+grid1[x + 1][y] += 1;
+if (y >= 1)
+grid1[x][y - 1] += 1;
+if (y <= 1)
+grid1[x][y + 1] += 1;
 }
 }
 }
