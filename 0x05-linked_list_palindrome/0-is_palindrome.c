@@ -10,10 +10,10 @@
 int is_palindrome(listint_t **head)
 {
 listint_t *roadrunner = (*head);
-int i = 1, y, x;
-int *array, *current;
+int i = 1, y, x, z = 0;
+int *array;
 
-if (!(*head))
+if (!(*head) || !head)
 return (1);
 while (roadrunner->next)
 {
@@ -33,9 +33,9 @@ array[x] = roadrunner->n;
 x++;
 roadrunner = roadrunner->next;
 }
-for (x = i / 2, y = i / 2; x < 0; x--, y++)
+for (z = i / 2 - 1, y = i / 2 ; z != -1; z--, y++)
 {
-if (array[x] - array[y] != 0)
+if (array[z] != array[y])
 {
 free(array);
 return (0);
