@@ -13,7 +13,7 @@ listint_t *roadrunner = (*head);
 int i = 1, y, x, z = 0;
 int *array;
 
-if (!(*head) || !head)
+if (!roadrunner)
 return (1);
 while (roadrunner->next)
 {
