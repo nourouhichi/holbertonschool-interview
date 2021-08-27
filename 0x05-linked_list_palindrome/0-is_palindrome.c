@@ -31,8 +31,6 @@ array[x] = roadrunner->n;
 x++;
 roadrunner = roadrunner->next;
 }
-if (i % 2 != 0)
-i = i + 1;
 for (z = i / 2 - 1, y = i / 2 ; z != -1; z--, y++)
 {
 if (array[z] != array[y])
