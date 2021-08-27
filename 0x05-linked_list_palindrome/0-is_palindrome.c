@@ -31,7 +31,7 @@ array[x] = roadrunner->n;
 x++;
 roadrunner = roadrunner->next;
 }
-for (z = i / 2 - 1, y = i / 2 ; z != -1; z--, y++)
+for (z = i // 2 - 1, y = i // 2 ; z != -1; z--, y++)
 {
 if (array[z] != array[y])
 {
