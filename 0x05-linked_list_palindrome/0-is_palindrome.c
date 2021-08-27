@@ -20,8 +20,6 @@ while (roadrunner->next)
 i++;
 roadrunner = roadrunner->next;
 }
-if (i % 2 != 0)
-return (0);
 array = malloc(sizeof(int) * i);
 if (!array)
 return (0);
