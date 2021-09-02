@@ -20,8 +20,6 @@ while (roadrunner->next)
 i++;
 roadrunner = roadrunner->next;
 }
-if (i % 2 != 0)
-return (0);
 array = malloc(sizeof(int) * i);
 if (!array)
 return (0);
@@ -33,7 +31,7 @@ array[x] = roadrunner->n;
 x++;
 roadrunner = roadrunner->next;
 }
-for (z = i / 2 - 1, y = i / 2 ; z != -1; z--, y++)
+for (z = i - 1, y = 0; y < i / 2; z--, y++)
 {
 if (array[z] != array[y])
 {
