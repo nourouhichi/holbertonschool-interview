@@ -26,7 +26,7 @@ def n_queen(N, r, sol, p):
             sol.pop()
 
 
-if len(sys.argv) < 2:
+if len(sys.argv) != 2:
     print("Usage: nqueens N")
     sys.exit(1)
 n = int(sys.argv[1])
