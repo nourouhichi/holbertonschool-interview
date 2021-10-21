@@ -29,8 +29,9 @@ def n_queen(N, r, sol, p):
 if len(sys.argv) != 2:
     print("Usage: nqueens N")
     sys.exit(1)
-n = int(sys.argv[1])
-if type(n) != int:
+try:
+    n = int(sys.argv[1])
+except Exception:
     print("N must be a number")
     sys.exit(1)
 if n < 4:
