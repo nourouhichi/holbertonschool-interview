@@ -6,6 +6,8 @@ rain walls
 
 def rain(walls):
     """rain cubes"""
+    if walls == []:
+        return 0
     n = 0
     for i in range(len(walls) - 1):
         if walls[i] != 0:
