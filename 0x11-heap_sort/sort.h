@@ -7,7 +7,5 @@
 
 void print_array(const int *array, size_t size);
 void heap_sort(int *array, size_t size);
-void max_heap(int *array, size_t n);
-void heapify(int *array, int compteur, size_t n);
-
+void siftDown(int *array, int n, int i, size_t size);
 #endif
