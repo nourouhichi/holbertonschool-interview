@@ -3,30 +3,37 @@
 import requests
 
 
-def count_words(subreddit, word_list, hot_list=[], after=''):
-    """reddit api"""
-    try:
-        r = requests.get('https://www.reddit.com/r/{}/hot.json?after={}'.
-                         format(subreddit, after),
-                         headers={'User-Agent': 'custom'},
-                         allow_redirects=False)
-        if after is None:
-            dict = {}
-            for word in word_list:
-                for hot_word in hot_list:
-                    if word == hot_word:
-                        if word not in dict:
-                            dict[word] = 1
-                        else:
-                            dict[word] += 1
-            for word in sorted(dict, key=dict.get, reverse=True):
-                if dict[word]:
-                    print('{}: {}'.format(word, dict[word]))
-            return hot_list
-        for thread in r.json().get('data').get('children'):
-            hot_list += thread.get('data').get('title').lower().split()
-        after = r.json().get('data').get('after')
-        count_words(subreddit, word_list, hot_list, after)
-        return hot_list
-    except Exception:
+def count_words(subreddit, word_list, count_dict={}, after=""):
+    """reddit API"""
+    if len(count_dict) <= 0:
+        for item in word_list:
+            count_dict[item] = 0
+
+    if after is None:
+        word_list = [[key, value] for key, value in count_dict.items()]
+        word_list = sorted(word_list, key=lambda x: (-x[1], x[0]))
+        for k in word_list:
+            if k[1]:
+                print("{}: {}".format(k[0].lower(), k[1]))
         return None
+    url = "https://api.reddit.com/r/{}/hot".format(subreddit)
+    params = {'limit': 100, 'after': after}
+    headers = {'user-agent': 'my-app/0.0.1'}
+    response = requests.get(
+        url,
+        headers=headers,
+        params=params,
+        allow_redirects=False)
+
+    if response.status_code == 200:
+        after = response.json().get("data").get("after")
+        posts = response.json().get("data").get("children")
+        for child in posts:
+            title = child.get("data").get(
+                "title")
+            lower = [s.lower() for s in title.split(' ')]
+            for word in word_list:
+                count_dict[word] += lower.count(word.lower())
+    else:
+        return None
+    count_words(subreddit, word_list, count_dict, after)
