@@ -59,7 +59,7 @@ void rebuild_heap(heap_t *node)
 
 /**
  * pre_order - using pre-order traversal
- * @tree: pointer to the root node 
+ * @tree: pointer to the root node
  * @root: will be last note in traverse
  * @height: the height of the array to fill
  */
@@ -77,7 +77,7 @@ if (!height)
 	pre_order(tree->right, root, height);
 }
 /**
- * heap_extract - extracts the root node 
+ * heap_extract - extracts the root node
  * @root:pointer to the parent node
  * Return: the value stored in the root node
  */
