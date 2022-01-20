@@ -81,5 +81,6 @@ n = (int)size;
 for (i = 0; i != n; i++)
 tmp[i] = array[i];
 split(tmp, array, 0, n - 1);
+free(tmp);
 return;
 }
