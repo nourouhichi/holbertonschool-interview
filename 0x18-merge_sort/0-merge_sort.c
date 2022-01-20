@@ -73,9 +73,12 @@ return;
  */
 void merge_sort(int *array, size_t size)
 {
-int *tmp = malloc(sizeof(int) * size), i, n;
+int *tmp, i, n;
 
-if (!tmp || !array || size < 2)
+if (!array)
+return;
+tmp = malloc(sizeof(int) * size);
+if (!tmp)
 return;
 n = (int)size;
 for (i = 0; i != n; i++)
