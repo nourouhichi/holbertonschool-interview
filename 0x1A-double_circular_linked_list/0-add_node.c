@@ -13,7 +13,6 @@ node = malloc(sizeof(List));
 if (node)
 node->str = str;
 return (node);
-
 }
 /**
  * add_node_end - Adds a new node to the end of a double circular linked list
@@ -23,7 +22,7 @@ return (node);
  */
 List *add_node_end(List **list, char *str)
 {
-List *new_end;
+List *new_end, *tail;
 new_end = create(str);
 if (!new_end)
 return (NULL);
@@ -34,10 +33,11 @@ new_end->next = new_end;
 new_end->prev = new_end;
 return (new_end);
 }
-(*list)->prev->next = new_end;
-new_end->next = *list;
-new_end->prev = (*list)->prev;
+tail = (*list)->prev;
+tail->next = new_end;
 (*list)->prev = new_end;
+new_end->prev = tail;
+new_end->next = *list;
 return (new_end);
 }
 /**
@@ -49,7 +49,7 @@ return (new_end);
  */
 List *add_node_begin(List **list, char *str)
 {
-List *new_start;
+List *new_start, *tail;
 new_start = create(str);
 if (!new_start)
 return (NULL);
@@ -60,9 +60,12 @@ new_start->next = new_start;
 new_start->prev = new_start;
 return (new_start);
 }
-new_start->next = *list;
-new_start->prev = (*list)->prev;
+tail = (*list)->prev;
+tail->next = new_start;
 (*list)->prev = new_start;
-(*list) = new_start;
+
+new_start->prev = tail;
+new_start->next = *list;
+*list = new_start;
 return (new_start);
 }
