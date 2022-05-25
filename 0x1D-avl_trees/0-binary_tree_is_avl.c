@@ -23,6 +23,8 @@ if (h1 > h2)
 *height = h1;
 else
 *height = h2 + 1;
+if (abs(h1 - h2) > 1)
+		return (0);
 return (1);
 }
 /**
