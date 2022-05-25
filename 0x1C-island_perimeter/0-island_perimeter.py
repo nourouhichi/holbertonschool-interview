@@ -14,4 +14,4 @@ def island_perimeter(grid):
                 limit += 1
             if grid[i][j] and i > 0 and grid[i - 1][j] == 1:
                 limit += 1
-    return sum * 2 - limit * 2
+    return sum * 4 - limit * 2
