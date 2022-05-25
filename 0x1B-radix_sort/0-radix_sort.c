@@ -14,6 +14,8 @@ int current_digit_sort(int *array, ssize_t size, int *tmp, long exp)
 
 	for (i = 0; i < size; i++)
 		aux[(array[i] / exp) % 10]++, tmp[i] = 0;
+	for (i = 1; i < 10; i++)
+		aux[i] += aux[i - 1];
 	for (i = size - 1; i >= 0; i--)
 		tmp[--aux[(array[i] / exp) % 10]] = array[i];
 	for (i = 0; i < size; i++)
