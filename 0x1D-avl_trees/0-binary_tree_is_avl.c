@@ -20,11 +20,11 @@ avl2 = is_valid_avl(tree->right, tree->n, max, &h2);
 if (avl1 == 0 || avl2 == 0)
 return (0);
 if (h1 > h2)
-*height = h1;
+*height = h1 + 1;
 else
 *height = h2 + 1;
 if (abs(h1 - h2) > 1)
-		return (0);
+return (0);
 return (1);
 }
 /**
