@@ -4,7 +4,7 @@
 
 def isWinner(x, nums):
     """prime game function"""
-    if not nums:
+    if not nums or x < 1:
         return None
     n = max(nums)
     fl = []
