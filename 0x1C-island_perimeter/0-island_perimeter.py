@@ -10,7 +10,7 @@ def island_perimeter(grid):
     for i in range(grid_len):
         sm += sum(grid[i])
         for j in range(col):
-            if grid[i][j] :
+            if grid[i][j]:
                 if j > 0 and grid[i][j - 1] == 1:
                     limit += 1
                 if i > 0 and grid[i - 1][j] == 1:
