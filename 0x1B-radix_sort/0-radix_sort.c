@@ -10,7 +10,7 @@
 int current_digit_sort(int *array, ssize_t size, int *tmp, long exp)
 {
 	ssize_t i;
-	int aux[9] = {0};
+	int aux[10] = {0};
 
 	for (i = 0; i < size; i++)
 		aux[(array[i] / exp) % 10]++, tmp[i] = 0;
@@ -25,7 +25,7 @@ int current_digit_sort(int *array, ssize_t size, int *tmp, long exp)
 /**
  * radix_sort - RADIX sort
  * @array: array
- * @size: size
+ * @size: size of array
  * Return: nothing
  */
 void radix_sort(int *array, size_t size)
@@ -37,11 +37,18 @@ void radix_sort(int *array, size_t size)
 	if (!array || size < 2)
 		return;
 
-	tmp = malloc(sizeof(long *) * size);
+	tmp = malloc(sizeof(int *) * size);
 	if (!tmp)
 		return;
 
 	for (i = 0; i < size; i++)
 		max = array[i] > max ? array[i] : max;
+
+	while (max / exp > 0)
+	{
+		current_digit_sort(array, size, tmp, exp);
+		print_array(array, size);
+		exp *= 10;
+	}
 	free(tmp);
 }
