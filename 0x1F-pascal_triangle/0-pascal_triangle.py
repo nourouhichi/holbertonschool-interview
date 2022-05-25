@@ -4,6 +4,8 @@
 
 def pascal_triangle(n):
     """ pascal triangle function """
+    if n < 0:
+        return []
     pascal = [[1]]
     while len(pascal) != n:
         previous = pascal[-1]
