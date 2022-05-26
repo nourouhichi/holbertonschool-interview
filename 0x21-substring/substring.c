@@ -9,13 +9,12 @@
 */
 int *find_substring(char const *s, char const **words, int nb_words, int *n)
 {
-int x = 0, y, c, *res, *picked, len, wlen, i, j;
+int x = 0, y, c, *res, *picked, len, wlen;
 
 
 len = strlen(s);
 wlen = strlen(words[0]);
-i = len * (sizeof(int));
-res = (int *)malloc(i);
+res = (int *)malloc(len * (sizeof(int)));
 picked = (int *)malloc(nb_words * sizeof(int));
 if (!res && !picked)
 return (NULL);
