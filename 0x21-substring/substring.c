@@ -1,9 +1,4 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
 #include "substring.h"
-
-
 /**
  * find_substring - Entry point
  * @s: char const
@@ -45,7 +40,7 @@ break;
 }
 if (y == nb_words)
 {
-res[(*n)++] = x + 1;
+res[(*n)++] = x;
 }
 x++;
 }
